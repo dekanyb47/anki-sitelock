@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32.528545mm"
+   height="28.390459mm"
+   viewBox="0 0 32.528545 28.390459"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="32.528545"
+       height="28.390459"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-87.042093,-17.600206)">
+    <g
+       id="g3">
+      <path
+         sodipodi:type="star"
+         style="fill:none;fill-opacity:1;stroke:#d14d01;stroke-width:1.565;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path1"
+         inkscape:flatsided="false"
+         sodipodi:sides="3"
+         sodipodi:cx="73.976685"
+         sodipodi:cy="64.137421"
+         sodipodi:r1="17.876883"
+         sodipodi:r2="8.9384413"
+         sodipodi:arg1="0.52293876"
+         sodipodi:arg2="1.5701363"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 89.464415,73.065642 -15.481831,0.01022 -15.481831,0.01022 7.732066,-13.412768 7.732067,-13.412768 7.749764,13.40255 z"
+         inkscape:transform-center-x="0.005901683"
+         inkscape:transform-center-y="-4.4641104"
+         transform="matrix(-1,0,0,1,177.28895,-27.877914)" />
+      <path
+         d="m 102.21369,25.536027 0.3821,11.951632 h 1.42547 l 0.37779,-11.951632 z"
+         style="fill:#d14d01;stroke:#d14d01;stroke-width:0.814636;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path2"
+         sodipodi:nodetypes="ccccc" />
+      <ellipse
+         style="fill:#d14d01;fill-opacity:1;stroke:none;stroke-width:1.42729;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="path3"
+         cx="103.30637"
+         cy="41.097939"
+         rx="1.6450597"
+         ry="1.6452667" />
+    </g>
+  </g>
+</svg>

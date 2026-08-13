@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This website is locked!</title>
+  <link rel="stylesheet" href="lockUi.css">
+</head>
+<body>
+  <main>
+    <section id="siteContentSection">
+      <h1>This website has been locked!</h1>
+      
+      <h2>
+        You can unlock it for <span id="unlockTimeField">___</span> by
+        paying <span id="priceField">___</span> credits.
+      </h2>
+
+      <h2>You have <span id="creditBalance">___</span> credits.</h2>
+
+      <div id="buttonsCont">
+        <button class="inline" id="unlockButton">Unlock page!</button>
+        <button class="inline" id="emergencyUnlockButton">This is an emergency</button>
+      </div>
+    </section>
+
+    <section id="toastSection">
+      <!-- <div class="toast infoToast">This is a test toast notification!</div>
+      <div class="toast errorToast">This is a test toast notification!</div>
+      <div class="toast warningToast">This is a test toast notification!</div> -->
+    </section>
+    <section id="menuSection">
+      <input type="image" src="assets/config-symbol.svg" id="settingsButton" class="menuIcon inline">
+    </section>
+
+    <dialog id="settingsDialog">
+      <form method="post" id="settingsForm">  
+        <label class="settingsLabel">Decks to include: <input type="text" id="decksInput"></label>
+        <label class="settingsLabel">Unlock price: <input type="number", id="unlockPriceInput"></label>
+        <label class="settingsLabel">Unlock time: <input type="number", id="unlockTimeInput"></label>
+        <button type="submit" id="saveSettingsButton">Save</button>
+      </form>
+    </dialog>
+  </main>
+
+  <!-- <script src="../helper/URLUtils.js"></script>
+  <script src="../helper/validationUtils.js"></script>
+
+  <script src="lockUi.js"></script>
+  <script src="toast.js"></script> -->
+
+  <!-- TODO: remove -->
+  <script src="debug.js"></script>
+</body>
+</html>
