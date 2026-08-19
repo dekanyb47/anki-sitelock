@@ -46,7 +46,7 @@ async function syncStudiedCount() {
   const currentTimestamp = Date.now();
   if (isDifferentDay(currentTimestamp, lastSyncedTimestamp)) {
     if (currentTimestamp < lastSyncedTimestamp) {
-      console.warning("syncStudiedCount: current timestamp is before the last sync's timestamp");
+      console.warn("syncStudiedCount: current timestamp is before the last sync's timestamp");
     }
 
     await syncStudiedToday(studiedToday);
@@ -54,14 +54,15 @@ async function syncStudiedCount() {
   }
   else {
     if (studiedToday < lastSyncedStudiedToday) {
-      console.error("syncStudiedCount: last synced studied count is smaller than current studied count (day didn't change)");
-      return;
+      console.warn("syncStudiedCount: last synced studied count is smaller than current studied count (day didn't change)", 
+        "User most likely changed the decks the extension checks.",
+        "Values in storage were not updated.");
+      return true;
     }
 
     await syncStudiedToday(studiedToday);
     const newCredits = studiedToday - lastSyncedStudiedToday;
     await addCredits(newCredits);
-
   }
 
   console.log("syncStudiedCount: sync completed");

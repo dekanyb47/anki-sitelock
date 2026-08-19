@@ -1,13 +1,26 @@
 // TODO: write generalized updateNumberField, updateArrayField functions if there are too many functions
 // TODO: keep function behavior consistant (add/remove or update)
 
+// storage variables:
+// - decks
+// - credits
+// - lockedWebsites
+// - unlockedWebsites
+// - unlockPrice
+// - unlockTimeMs
+// - lastSyncedStudiedToday
+// - lastSyncedStudiedTimestamp
+
 const storageWriteFunctions = {
   "addCredits": addCredits,
   "subtractCredits": subtractCredits,
   "syncStudiedToday": syncStudiedToday,
   "updateDecks": updateDecks,
+  "updateLockedWebsites": updateLockedWebsites,
   "unlockWebsite": unlockWebsite,
-  "removeUnlockedWebsite": removeUnlockedWebsite
+  "removeUnlockedWebsite": removeUnlockedWebsite,
+  "updateUnlockPrice": updateUnlockPrice,
+  "updateUnlockTime": updateUnlockTime
 }
 
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -31,6 +44,26 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   return true;
 })
+
+async function updateUnlockTime(value) {
+  if (!validationUtils.isValidNumber(value) || value <= 0) {
+    console.warn(`updateUnlockTime: invalid input ${value}`);
+    return false;
+  }
+
+  await browser.storage.local.set({"unlockTimeMs": value});
+  return true;
+}
+
+async function updateUnlockPrice(value) {
+  if (!validationUtils.isValidNumber(value) || value < 0) {
+    console.warn(`updateUnlockPrice: invalid input ${value}`);
+    return false;
+  }
+
+  await browser.storage.local.set({"unlockPrice": value});
+  return true;
+}
 
 async function addCredits(value) {
   if (!validationUtils.isValidNumber(value) || value < 0) {
@@ -82,6 +115,16 @@ async function updateDecks(decks) {
   }
 
   await browser.storage.local.set({"decks": decks});
+  return true;
+}
+
+async function updateLockedWebsites(websites) {
+  if (!validationUtils.isValidArray(websites)) {
+    console.warn(`updateLockedWebsites: invalid input: ${decks}`);
+    return false;
+  }
+
+  await browser.storage.local.set({"lockedWebsites": websites});
   return true;
 }
 

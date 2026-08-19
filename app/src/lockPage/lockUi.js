@@ -1,3 +1,5 @@
+// TODO: maybe have an extra check if website is locked upon loading the site (for when locked websites will be updated)
+
 const params = new URLSearchParams(window.location.search);
 const targetURL = params.get("target");
 if (!targetURL) console.error("lockUi.js: No target URL was found in lockUi.html query string.");

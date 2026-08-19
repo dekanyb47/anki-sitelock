@@ -34,8 +34,10 @@
     </section>
 
     <dialog id="settingsDialog">
+      <!-- TODO: add help for input and finish design -->
       <form method="post" id="settingsForm">  
-        <label class="settingsLabel">Decks to include: <input type="text" id="decksInput"></label>
+        <label class="settingsLabel">Websites to check (space separated): <input type="text" id="websitesInput"></label>
+        <label class="settingsLabel">Decks to include (space separated): <input type="text" id="decksInput"></label>
         <label class="settingsLabel">Unlock price: <input type="number", id="unlockPriceInput"></label>
         <label class="settingsLabel">Unlock time: <input type="number", id="unlockTimeInput"></label>
         <button type="submit" id="saveSettingsButton">Save</button>
@@ -43,13 +45,14 @@
     </dialog>
   </main>
 
-  <!-- <script src="../helper/URLUtils.js"></script>
+  <script src="../helper/URLUtils.js"></script>
   <script src="../helper/validationUtils.js"></script>
 
   <script src="lockUi.js"></script>
-  <script src="toast.js"></script> -->
+  <script src="toast.js"></script>
+  <script src="settings.js"></script>
 
   <!-- TODO: remove -->
-  <script src="debug.js"></script>
+  <!-- <script src="debug.js"></script> -->
 </body>
 </html>

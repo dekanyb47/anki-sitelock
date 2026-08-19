@@ -150,15 +150,14 @@ button:active{
 }
 
 .settingsLabel{
+  padding: 0.3rem;
 
   display:grid;
   width: 100%;
   grid-template-columns: auto 1fr;
 }
 
-#decksInput{
-  width:max-content;
-}
 
-#saveSettingsButton{
-}
+
+/* #saveSettingsButton{
+} */
