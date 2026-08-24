@@ -1,0 +1,30 @@
+<!-- TODO: make sure generic css designs between this and lock site is consistant (from one file), and find a good structure to do that cleanly.
+ includes: :root variables, backgrounds, buttons etc. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anki SiteLock popup</title>
+
+  <link rel="stylesheet" href="/app/assets/base.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Anki SiteLock</h1>
+
+    <h2>Your credits: <span id="creditBalance">___</span></h2>
+
+    <section id="menuSection">
+      <input type="image" src="/app/assets/config-symbol.svg" id="settingsButton" class="menuIcon">
+      <input type="image" src="/app/assets/info-symbol-light.svg" id="infoButton" class="menuIcon">
+    </section>
+  </main>
+
+  <script src="/app/src/helper/validationUtils.js"></script>
+
+  <script src="popup.js"></script>
+</body>
+</html>

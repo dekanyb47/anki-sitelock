@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This website has been locked!</title>
+  <link rel="stylesheet" href="/app/assets/base.css">
+  <link rel="stylesheet" href="lockPage.css">
+</head>
+<body>
+  <main>
+    <section id="siteContentSection">
+      <h1>This website has been locked!</h1>
+      
+      <h2>
+        You can unlock it for <span id="unlockTimeField">___</span> by
+        paying <span id="priceField">___</span> credits.
+      </h2>
+
+      <h2>You have <span id="creditBalance">___</span> credits.</h2>
+
+      <button class="inline" id="unlockButton">Unlock page!</button>
+      <h5 id="emergencyUnlock">Is this an emergency? Click here to unlock site immediately.</h5>
+    </section>
+
+    <section id="toastSection">
+      <!-- <div class="toast infoToast">This is a test toast notification!</div>
+      <div class="toast errorToast">This is a test toast notification!</div>
+      <div class="toast warningToast">This is a test toast notification!</div> -->
+    </section>
+  </main>
+
+  <script src="/app/src/helper/URLUtils.js"></script>
+  <script src="/app/src/helper/validationUtils.js"></script>
+
+  <script src="lockPage.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

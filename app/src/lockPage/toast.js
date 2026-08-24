@@ -1,16 +1,16 @@
-const symbolPaths = {
-  "info": "/app/src/lockPage/assets/info-symbol.svg",
-  "warning": "/app/src/lockPage/assets/warning-symbol.svg",
-  "error": "/app/src/lockPage/assets/error-symbol.svg"
+const toastSymbolPaths = {
+  "info": "/app/assets/info-symbol-dark.svg",
+  "warning": "/app/assets/warning-symbol.svg",
+  "error": "/app/assets/error-symbol.svg"
 };
 
 // TODO: add validation if needed
 function showToast(message, type="error", duration=5000) {
-  if (!(type in symbolPaths)) console.warn(`toast.js: unrecognized toast type: ${type}`);
+  if (!(type in toastSymbolPaths)) console.warn(`toast.js: unrecognized toast type: ${type}`);
 
   const symbol = document.createElement("img");
   symbol.className = "toastSymbol";
-  symbol.setAttribute("src", symbolPaths[type]);
+  symbol.setAttribute("src", toastSymbolPaths[type]);
 
   const text = document.createElement("div");
   text.className = "toastText"

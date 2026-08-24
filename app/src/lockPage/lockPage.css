@@ -1,0 +1,66 @@
+#siteContentSection{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 98vh;
+}
+
+#unlockButton{
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-top: 5rem;
+}
+
+#emergencyUnlock{
+  margin-top: auto;
+}
+
+#toastSection{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.toastNotificationContainer{
+  font-weight: bold;
+  font-size: 1.1rem;
+
+  width: 20vw;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 0.7rem 0 var(--shadow-color);
+
+  display: flex;
+  padding: 0.8rem;
+  margin: 1rem;
+
+  transition-duration: 0.2s;
+}
+
+.toastSymbol{ 
+  width: 2rem;
+  margin-right: 0.8rem;
+}
+
+.toastText{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoToast{
+  border: 0.2rem solid var(--info-color-1);
+  background: linear-gradient(135deg, var(--info-color-2), var(--info-color-3));
+}
+
+.warningToast{
+  border: 0.2rem solid var(--warning-color-1);
+  background: linear-gradient(135deg, var(--warning-color-2), var(--warning-color-3));
+}
+
+.errorToast{
+  border: 0.2rem solid var(--error-color-1);
+  background: linear-gradient(135deg, var(--error-color-2), var(--error-color-3));
+}

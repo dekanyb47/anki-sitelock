@@ -1,0 +1,62 @@
+:root {
+  --text-white-color: rgba(255, 255, 255, 0.65);
+  --body-background-color-1: #121212;
+  --body-background-color-2: #202020;
+  --window-border-color-1: #505050;
+
+  --button-color-1:#5C1AF6;
+  --button-color-2: #8d32f5;
+  --button-text-color: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.7);
+
+  --info-color-1: #461aac;
+  --info-color-2: #5C1AF6;
+  --info-color-3: #8d32f5;
+  --warning-color-1: #d14d01;
+  --warning-color-2:#f87031;
+  --warning-color-3:#ff864f;
+  --error-color-1:#a71717;
+  --error-color-2:#c73333;
+  --error-color-3: #db4848;
+}
+
+body {
+  background-color: var(--body-background-color-1);
+  color: var(--text-white-color);
+  
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+button{
+  background-color: var(--button-color-1);
+  background: linear-gradient(135deg, var(--button-color-1), var(--button-color-2));
+  border: 0px;
+  border-radius: 10rem;
+  box-shadow: 0 0.5rem 0.7rem 0 var(--shadow-color);
+
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+
+  text-align: center;
+  color: var(--button-text-color);
+  font-size: 1.3rem;
+  transition-duration: 0.5s;
+}
+
+button:hover{
+  transition-duration: 0.2s;
+  filter: brightness(0.85);
+}
+
+button:active{
+  transition-duration: 0.05s;
+  filter: brightness(1.2);
+}
+
+.inline {
+  display: inline-block;
+}

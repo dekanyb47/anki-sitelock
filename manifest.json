@@ -8,6 +8,11 @@
   "icons": {
   },
 
+  "browser_action": {
+    "default_popup": "app/src/browserActionPopup/popup.html",
+    "default_title": "test popup"
+  },
+
   "browser_specific_settings": {
     "gecko": {
       "id": "borderify@mozilla.org",
@@ -38,6 +43,7 @@
   ],
 
   "web_accessible_resources": [
-    "/app/src/lockPage/lockUi.html"
+    "/app/src/lockPage/lockPage.html",
+    "/app/src/settingsPage/settings.html"
   ]
 }

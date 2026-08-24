@@ -1,5 +1,5 @@
 
-const lockPageURL = browser.runtime.getURL("app/src/lockPage/lockUi.html");
+const lockPageURL = browser.runtime.getURL("app/src/lockPage/lockPage.html");
 
 // runs a timestamp comparison, removes url from unlockedWebsites if needed.
 // returns true if url is unlocked, false if it isn't
@@ -22,10 +22,6 @@ async function isUnlockedUrl(URLHostname) {
 
   const unlocked = await updateUnlockedStatus(URLHostname, unlockedWebsites, unlockTime);
 
-  // const {unlockedWebsites: newUnlockedWebsites = {}} = await browser.storage.local.get("unlockedWebsites");
-  // console.log("unlocked websites:");
-  // console.log(newUnlockedWebsites);
-
   return unlocked;
 }
 
@@ -42,11 +38,9 @@ async function inLockedWebsites(URLHostname) {
 browser.webNavigation.onBeforeNavigate.addListener(async (details) => {
   if (details.frameId !== 0) return;
 
-  // console.log(details.url);
-  // console.log(details.frameId);
-
   const targetURL = details.url;
   const hostname = URLUtils.getURLHostname(targetURL);
+  if (!hostname) return;
 
   if (!await inLockedWebsites(hostname)) return;
   if (await isUnlockedUrl(hostname)) return;
