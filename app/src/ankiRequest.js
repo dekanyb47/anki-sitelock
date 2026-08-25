@@ -87,7 +87,6 @@ async function ankiFindAllCards(decks, uniqueQueryTerm) {
   return totalCount;
 }
 
-// TODO: clean up these two if needed
 async function pingAnkiConnect() {
   try {
     const response = await fetch(ANKICONNECT_URL, {

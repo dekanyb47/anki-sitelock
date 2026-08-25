@@ -1,6 +1,5 @@
-// TODO: config page can't be accessed when there are no websites to lock
-// TODO: clean up this and lockPage.js
-// TODO: move constants, think about website script file structure (modules or not)
+// TODO: move constants
+// TODO: add an advanced settings tab where stuff like AnkiConnect port can be changed.
 
 // add values in storage to input fields
 const FILL_INPUT_TIMEOUT = 100; 
@@ -12,9 +11,9 @@ const websitesInput = document.getElementById("websitesInput");
 const unlockPriceInput = document.getElementById("unlockPriceInput");
 const unlockTimeInput = document.getElementById("unlockTimeInput");
 
-
+// TODO: it may be pointless to validate during reads when writes are validated too.
 async function fillInputValues() {
-  const {decks, lockedWebsites, unlockPrice, unlockTimeMs: unlockTime} = await browser.storage.local.get(["decks", "lockedWebsites", "unlockPrice", "unlockTimeMs"]);
+  const {decks, lockedWebsites, unlockPrice, unlockTimeMs: unlockTimeMs} = await browser.storage.local.get(["decks", "lockedWebsites", "unlockPrice", "unlockTimeMs"]);
 
   let decksStr = "";
   if (validationUtils.isValidArray(decks) && decks.length !== 0) decksStr = decks.join(';');
@@ -25,21 +24,18 @@ async function fillInputValues() {
   else console.warn(`fillInputValues: incorrect value in storage for lockedWebsites: ${lockedWebsites}`);
 
   if (!validationUtils.isValidNumber(unlockPrice)) console.warn(`fillInputValues: incorrect value in storage for unlockPrice: ${unlockPrice}`);
-  if (!validationUtils.isValidNumber(unlockTime)) console.warn(`fillInputValues: incorrect value in storage for unlockTime: ${unlockTime}`);
+  if (!validationUtils.isValidNumber(unlockTimeMs)) console.warn(`fillInputValues: incorrect value in storage for unlockTime: ${unlockTime}`);
+  const unlockTimeMin = unlockTimeMs / 60000;
 
   decksInput.value = decksStr;
   websitesInput.value = lockedWebsitesStr;
   unlockPriceInput.value = unlockPrice;
-  unlockTimeInput.value = unlockTime;
+  unlockTimeInput.value = unlockTimeMin;
 }
 
-// TODO: set timeout
 fillInputValues();
 
-// TODO: redirect maybe?
-// TODO: strip whitespace
-// TODO: remove console.log
-// TODO: validate?
+// TODO: send a message to lockPage to redirect if the locked website has been removed.
 settingsForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -49,38 +45,66 @@ settingsForm.addEventListener("submit", async (event) => {
   const unlockTimeStr = unlockTimeInput.value;
 
   if (decksStr !== "") {
-    const decks = decksStr.split(";");    
-    const success = await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateDecks", "value": decks});
-    if (success) console.log("successfully updated decks");
+    const decks = getDeckArray(decksStr);
+    await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateDecks", "value": decks});
   }
 
   if (websitesStr !== "") {
-    const websites = websitesStr.split(";");
-    let websiteHostnames = [];
-    for (let i = 0; i < websites.length; i++) {
-      if (websites[i] !== "") {
-        websiteHostnames.push(URLUtils.getURLHostname(websites[i]));
-      }
-    }
-    const success = await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateLockedWebsites", "value": websiteHostnames});
-    if (success) console.log("successfully updated locked websites!")
+    const websiteHostnames = getHostnameArray(websitesStr);
+    await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateLockedWebsites", "value": websiteHostnames});
   }
 
   if (unlockPriceStr !== "") {
-    const unlockPrice = Number(unlockPriceStr);
-    if (isFinite(unlockPrice)) {
-      const success = await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateUnlockPrice", "value": unlockPrice});
-      if (success) console.log("successfully updated unlockPrice!");
-    }
-    else console.warn(`settingsForm listener: invalid input: ${unlockPrice}`);
+    const unlockPrice = getUnlockPrice(unlockPriceStr);
+    await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateUnlockPrice", "value": unlockPrice});
   }
 
   if (unlockTimeStr !== "") {
-    const unlockTime = Number(unlockTimeStr);
-    if (isFinite(unlockTime)) {
-      const success = await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateUnlockTime", "value": unlockTime});
-      if (success) console.log("successfully updated unlockTime!");
-    }
-    else console.warn(`settingsForm listener: invalid input: ${unlockPrice}`);
+    const unlockTimeMs = getUnlockTimeMs(unlockTimeStr);
+    if (isFinite(unlockTimeMs)) await browser.runtime.sendMessage({"type": "storageWrite", "function": "updateUnlockTime", "value": unlockTimeMs});
   }
 });
+
+function getDeckArray(decksInputStr) {
+  let result = [];
+  const decks = decksInputStr.split(";");
+  
+  for (let i = 0; i < decks.length; i++) {
+    const trimmed = decks[i].trim();
+    if (trimmed !== "") result.push(trimmed);
+  }
+
+  return result;
+}
+
+function getHostnameArray(websitesInputStr) {
+  const websites = websitesInputStr.split(";");
+  let result = [];
+
+  for (let i = 0; i < websites.length; i++) {
+    if (websites[i] !== "") {
+      const trimmed = websites[i].trim()
+      result.push(URLUtils.getURLHostname(trimmed));
+    }
+  }
+
+  return result;
+}
+
+function getUnlockPrice(unlockPriceStr) {
+  const unlockPrice = Number(unlockPriceStr);
+  if (isFinite(unlockPrice) && unlockPrice > 0) return unlockPrice;
+  else {
+    console.warn(`settingsForm listener: invalid input: ${unlockPrice}`);
+    return NaN;
+  }
+}
+
+function getUnlockTimeMs(unlockTimeMinStr) {
+  const unlockTimeMs = Math.floor(Number(unlockTimeMinStr) * 60000);
+  if (isFinite(unlockTimeMs) && unlockTimeMs > 0) return unlockTimeMs;
+  else {
+    console.warn(`getUnlockTimeMs: invalid input: ${unlockTimeMinStr}`);
+    return NaN;
+  }
+}

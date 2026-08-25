@@ -45,6 +45,7 @@ unlockButton.addEventListener("click", async () => {
   }
 
   console.log(`website has been unlocked.`);
+  unlockButton.style.display = "none";
   redirectToTarget();
 })
 

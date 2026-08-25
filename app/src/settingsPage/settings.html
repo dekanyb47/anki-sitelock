@@ -10,10 +10,10 @@
 </head>
 <body>
   <main>
-    <h1>Anki SiteLock config</h1>
+    <h1>AnkiSitelock config</h1>
     <hr>
 
-    <!-- TODO: add help for input -->
+    <!-- TODO: show toast notifications on this website -->
     <form method="post" id="settingsForm" autocomplete="off"> 
       <div class="settingsEntryCont">
         <label class="settingsLabel" for="websitesInput">Websites to lock (separated by semicolons): </label>
@@ -25,9 +25,9 @@
         <input type="text" id="decksInput" class="settingsInput" autocomplete="off">
       </div>
       <h4 class="note">
-        Note: Anki deck notation looks like this: 'parentDeckName::subDeckName'.<br>
-        - By entering 'parentDeckName', the extension checks every card within the deck and all its subdecks.<br>
-        - By entering 'parentDeckName::subDecksName', the extension checks only cards within 'subDecksName'!
+        Note: Anki uses double colons to indicate deck hierarchy: 'parentDeck::subDeck'.<br>
+        - By entering 'parentDeck', the extension checks every card within the parentDeck and also subDeck.<br>
+        - By entering 'parentDeck::subDeck', the extension checks only cards within subDeck!
       </h4>
 
       <div class="settingsEntryCont">
@@ -36,7 +36,7 @@
       </div>
 
       <div class="settingsEntryCont">
-        <label class="settingsLabel">Unlock time: </label>
+        <label class="settingsLabel">Unlock time in minutes: </label>
         <input type="number" id="unlockTimeInput" class="settingsInput" autocomplete="off">
       </div>
 

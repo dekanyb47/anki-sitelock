@@ -3,19 +3,19 @@
   "name": "Anki WebsiteLock",
   "version": "1.0",
 
-  "description": "adsf",
+  "description": "An addon that helps with consistant studying of Anki cards by blocking websites.",
 
   "icons": {
   },
 
   "browser_action": {
     "default_popup": "app/src/browserActionPopup/popup.html",
-    "default_title": "test popup"
+    "default_title": "Browser action popup."
   },
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "borderify@mozilla.org",
+      "id": "anki-sitelock@dekanyb47",
       "data_collection_permissions": {
         "required": ["none"]
       }

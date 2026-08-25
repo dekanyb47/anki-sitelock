@@ -6,7 +6,7 @@ async function setupStorageValues() {
       "lockedWebsites" : ["registrations.start-discover.eu", "youtube.com", "old.reddit.com", "instagram.com", "facebook.com", "google.com"],
       "credits": 100,
       "unlockPrice": 20,
-      "unlockTimeMs": 10000000
+      "unlockTimeMs": 6000000
     });
     console.info("debugContentScript: storage values have been set up.");
   };
