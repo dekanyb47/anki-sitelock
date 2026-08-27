@@ -1,3 +1,7 @@
+// storageManager.js
+// Contains functions that write to storage.
+// Invoke the listener by specifying the message's type as 'storageWrite'.
+
 // TODO: write generalized updateNumberField, updateArrayField functions if there are too many functions
 // TODO: keep function behavior consistant (add/remove or update)
 

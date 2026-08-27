@@ -1,3 +1,6 @@
+// ankiRequest.js 
+// Contains functions related to reading data from the Anki database through AnkiConnect.
+// Invoke the file's listener by specifying the message's type as 'ankiRequest'
 
 const ANKICONNECT_URL = "http://127.0.0.1:8765";
 const ANKICONNECT_VERSION = 5;

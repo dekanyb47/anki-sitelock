@@ -1,3 +1,7 @@
+// syncStudiedCount.js
+// Contains logic for syncing data from Anki to the storage. 
+// This process is done everytime a page gets locked, but also periodically on top of that (every 10 minutes)
+
 // TODO: move constants
 // Note: Studied count is synced to storage every time a page is locked. On top of that, there is this syncing process that happens periodically
 const SYNC_INTERVAL = 600000
@@ -38,9 +42,7 @@ async function syncStudiedCount() {
   const {lastSyncedTimestamp = 0} = await browser.storage.local.get("lastSyncedTimestamp");
 
   const studiedToday = await getCardsStudiedToday(decks);
-  if (studiedToday === null) {
-    return;
-  }
+  if (studiedToday === null) return;
 
   // TODO: cards studied after a sync and before midnight are lost
   const currentTimestamp = Date.now();

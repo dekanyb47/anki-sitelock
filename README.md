@@ -25,7 +25,7 @@ Requirements
 
 - Firefox
 - Anki version 2.1.x or newer
-- [AnkiConnect](https://ankiweb.net/shared/info/2055492159) Anki addon installed in Anki
+- [AnkiConnect](https://ankiweb.net/shared/info/2055492159) addon installed in Anki
 
 Running
 -------

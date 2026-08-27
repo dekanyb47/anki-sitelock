@@ -1,3 +1,5 @@
+// onPageOpen.js
+// Checks newly opened websites if they are locked or not. Redirects the user to the lock page, if it is.
 
 const lockPageURL = browser.runtime.getURL("app/src/lockPage/lockPage.html");
 
