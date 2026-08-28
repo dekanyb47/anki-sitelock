@@ -3,6 +3,7 @@
 // This process is done everytime a page gets locked, but also periodically on top of that (every 10 minutes)
 
 // TODO: move constants
+
 // Note: Studied count is synced to storage every time a page is locked. On top of that, there is this syncing process that happens periodically
 const SYNC_INTERVAL = 600000
 
