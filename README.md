@@ -5,6 +5,8 @@ A firefox addon that helps with consistant studying of Anki cards by blocking we
 
 Anki Sitelock blocks a configurable list of websites. To unlock one, you spend credits, which you earn by studying in Anki. Once unlocked, it stays accessible for a limited time window, before it gets locked again. Syncing between Anki and the extension is done with [AnkiConnect](https://ankiweb.net/shared/info/2055492159).
 
+Note: This project is not done, and is yet to uploaded to mozilla's servers! See 'Running' tab to run it locally.
+
 Features
 --------
 
@@ -30,9 +32,13 @@ Requirements
 Running
 -------
 
-Addon not yet uploaded to mozilla's servers.
+As of now, you can only run the extension locally. To do that, you need to:
+- download the source code => head to [Mozilla's debugging page](about:debugging#/runtime/this-firefox) => Click 'Load temporary add-on' => Select the source code.
 
-Once Anki and AnkiConnect are installed on your device, download the extension at ______
+Known issues
+------------
+
+- If only some variables are configured, the lock page doesn't display them properly (undefined)
 
 Future ideas
 ------------
